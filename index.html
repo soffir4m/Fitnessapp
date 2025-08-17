@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fitness App</title>
+  <link href="style.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-green-100 via-white to-green-50 text-gray-800 font-sans">
+
+  <!-- Navbar -->
+  <header class="backdrop-blur-lg bg-white/70 fixed w-full z-50 shadow-md">
+    <nav class="container mx-auto flex justify-between items-center p-4">
+      <h1 class="text-2xl font-bold text-green-600">Fitness App</h1>
+      <ul class="flex space-x-6 font-medium">
+        <li><a href="#home" class="hover:text-green-500 transition">Inicio</a></li>
+        <li><a href="#about" class="hover:text-green-500 transition">Sobre Nosotros</a></li>
+        <li><a href="#programs" class="hover:text-green-500 transition">Programas</a></li>
+        <li><a href="#contact" class="hover:text-green-500 transition">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section id="home" class="relative h-screen flex items-center justify-center bg-[url('hiking.png')] bg-cover bg-center">
+    <div class="absolute inset-0 bg-black/40 backdrop-blur-sm"></div>
+    <div class="relative z-10 text-center text-white px-6">
+      <h2 class="text-5xl font-extrabold mb-4 drop-shadow-lg">Conecta tu cuerpo con la naturaleza</h2>
+      <p class="text-lg mb-6 max-w-2xl mx-auto">Entrena al aire libre, siente la energía del sol, el viento y la tierra. Vive el fitness como nunca antes.</p>
+      <a href="#programs" class="px-6 py-3 bg-green-500 hover:bg-green-600 rounded-full text-white font-semibold shadow-lg transition">Explorar Programas</a>
+    </div>
+  </section>
+
+
+  <!-- About -->
+  <section id="about" class="container mx-auto py-20 px-6">
+    <div class="grid md:grid-cols-2 gap-10 items-center">
+      <img src="trainers.jpg" alt="Entrenamiento al aire libre" class="rounded-2xl shadow-lg">
+      <div>
+        <h3 class="text-3xl font-bold text-green-600 mb-4">Sobre Nosotros</h3>
+        <p class="text-gray-700 leading-relaxed">
+          En <strong>Fitness App</strong>, creemos en el poder de entrenar en contacto con la naturaleza. 
+          Nuestros programas combinan lo mejor del fitness moderno con la esencia de la vida al aire libre.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Programs -->
+  <section id="programs" class="py-20 bg-gradient-to-r from-green-200 via-green-50 to-green-100">
+    <div class="container mx-auto text-center px-6">
+      <h3 class="text-3xl font-bold text-green-600 mb-12">Nuestros Programas</h3>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white/80 backdrop-blur-lg p-6 rounded-2xl shadow-lg hover:scale-105 transition">
+          <h4 class="text-xl font-semibold mb-3">Yoga Natural</h4>
+          <p class="text-gray-600">Conecta con tu respiración y el entorno, mejora tu flexibilidad y encuentra paz interior.</p>
+        </div>
+        <div class="bg-white/80 backdrop-blur-lg p-6 rounded-2xl shadow-lg hover:scale-105 transition">
+          <h4 class="text-xl font-semibold mb-3">Bootcamp al Aire Libre</h4>
+          <p class="text-gray-600">Entrenamiento intenso con fuerza, cardio y agilidad en un entorno natural.</p>
+        </div>
+        <div class="bg-white/80 backdrop-blur-lg p-6 rounded-2xl shadow-lg hover:scale-105 transition">
+          <h4 class="text-xl font-semibold mb-3">Running en Senderos</h4>
+          <p class="text-gray-600">Explora rutas únicas y mejora tu resistencia con nuestros grupos de running guiados.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="relative py-20 bg-[url('running.png')] bg-cover bg-center">
+    <div class="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
+    <div class="relative z-10 container mx-auto px-6">
+      <div class="text-center mb-10 text-white">
+        <h3 class="text-3xl font-bold">Contáctanos</h3>
+        <p class="text-lg">¿Listo para comenzar tu viaje fitness al aire libre?</p>
+      </div>
+      <form class="max-w-lg mx-auto space-y-6 bg-white/90 p-8 rounded-2xl shadow-lg backdrop-blur">
+        <input type="text" placeholder="Nombre" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-green-500 outline-none">
+        <input type="email" placeholder="Correo electrónico" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-green-500 outline-none">
+        <textarea placeholder="Mensaje" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-green-500 outline-none h-32"></textarea>
+        <button type="submit" class="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-3 rounded-lg transition">Enviar</button>
+      </form>
+    </div>
+  </section>
+
+
+  <!-- Footer -->
+  <footer class="bg-green-700 text-white text-center py-6">
+    <p>&copy; 2025 Fitness App. Todos los derechos reservados.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

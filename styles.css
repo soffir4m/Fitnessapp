@@ -1,0 +1,8 @@
+/* Personalización adicional */
+body {
+  scroll-behavior: smooth;
+}
+
+input::placeholder, textarea::placeholder {
+  color: #9ca3af;
+}
