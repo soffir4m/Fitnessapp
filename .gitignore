@@ -1,0 +1,113 @@
+# Variables de entorno y configuración sensible
+.env
+.env.local
+.env.production
+config.ini
+secrets.json
+
+# Archivos de Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environment
+venv/
+env/
+ENV/
+.venv/
+.ENV/
+
+# IDE y editores
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Logs y datos temporales
+logs/
+*.log
+*.log.*
+backups/
+temp/
+tmp/
+
+# Base de datos
+*.db
+*.sqlite
+*.sqlite3
+mysql_data/
+
+# Archivos de testing
+.coverage
+.pytest_cache/
+.tox/
+.nox/
+htmlcov/
+.coverage.*
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+
+# Prefect (ETL)
+.prefect/
+flows/
+prefect_data/
+
+# Docker
+.dockerignore
+docker-compose.override.yml
+
+# Jupyter Notebooks (si usas)
+.ipynb_checkpoints
+
+# Sistema operativo
+*.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Desktop.ini
+
+# Archivos específicos del proyecto
+# Backups automáticos
+backups/*.csv
+backups/*.json
+
+# Logs del ETL
+logs/*.json
+logs/*.txt
+
+# Certificados SSL (si los tienes)
+*.pem
+*.key
+*.crt
+*.cert
+
+# Archivos de configuración local
+local_settings.py
+settings_local.py
