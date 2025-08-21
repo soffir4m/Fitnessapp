@@ -1,0 +1,31 @@
+/* Import Poppins font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* Personalización adicional */
+html, body {
+  scroll-behavior: smooth;
+  font-family: 'Poppins', Arial, sans-serif !important; /* Added fallback and !important for override */
+  margin: 0;
+  padding: 0;
+}
+
+/* Ensure placeholders use Poppins */
+input::placeholder, textarea::placeholder {
+  color: #9ca3af;
+  font-family: 'Poppins', Arial, sans-serif !important;
+}
+
+/* Apply Poppins to all text elements with high specificity */
+h1, h2, h3, h4, h5, h6, p, a, button, input, textarea, span, div, li, ul, nav, section, footer {
+  font-family: 'Poppins', Arial, sans-serif !important;
+  font-weight: 400; /* Default weight, can be adjusted per element */
+}
+
+/* Optional: Specific weights for headings or buttons */
+h1, h2, h3 {
+  font-weight: 600;
+}
+
+button, a.btn {
+  font-weight: 600;
+}
