@@ -1,0 +1,64 @@
+version: '3.8'
+
+services:
+  # Base de datos MySQL
+  mysql:
+    image: mysql:8.0
+    container_name: fitness_mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD:-rootpassword}
+      MYSQL_DATABASE: ${DB_NAME:-fitness}
+      MYSQL_USER: ${DB_USER:-fitnessuser}
+      MYSQL_PASSWORD: ${DB_PASSWORD:-userpassword}
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    networks:
+      - fitness_network
+    restart: unless-stopped
+
+  # Aplicación FastAPI
+  api:
+    build: .
+    container_name: fitness_api
+    environment:
+      - DB_HOST=mysql
+      - DB_USER=${DB_USER:-fitnessuser}
+      - DB_PASSWORD=${DB_PASSWORD:-userpassword}
+      - DB_NAME=${DB_NAME:-fitness}
+      - DB_PORT=3306
+      - OPENWEATHER_API_KEY=${OPENWEATHER_API_KEY}
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./logs:/app/logs
+      - ./backups:/app/backups
+    depends_on:
+      - mysql
+    networks:
+      - fitness_network
+    restart: unless-stopped
+
+  # Prefect Server (opcional, para pipeline ETL)
+  prefect:
+    image: prefecthq/prefect:2-latest
+    container_name: fitness_prefect
+    environment:
+      - PREFECT_SERVER_API_HOST=0.0.0.0
+    ports:
+      - "4200:4200"
+    volumes:
+      - prefect_data:/root/.prefect
+    networks:
+      - fitness_network
+    restart: unless-stopped
+
+networks:
+  fitness_network:
+    driver: bridge
+
+volumes:
+  mysql_data:
+  prefect_data:
