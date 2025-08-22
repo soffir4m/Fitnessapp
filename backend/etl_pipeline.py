@@ -4,7 +4,7 @@ import json
 from datetime import datetime
 from prefect import flow, task
 from sqlalchemy import create_engine, text
-from config import settings
+from .config import settings
 import logging
 
 # Configurar logging

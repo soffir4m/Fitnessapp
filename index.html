@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Fitness App</title>
-  <link href="style.css" rel="stylesheet">
+  <link href="styles.css" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gradient-to-b from-green-100 via-white to-green-50 text-gray-800 font-sans">
@@ -17,6 +17,7 @@
         <li><a href="#home" class="hover:text-green-500 transition">Inicio</a></li>
         <li><a href="#about" class="hover:text-green-500 transition">Sobre Nosotros</a></li>
         <li><a href="#programs" class="hover:text-green-500 transition">Programas</a></li>
+        <li><a href="#fitness-dashboard" class="hover:text-green-500 transition">Dashboard</a></li>
         <li><a href="#contact" class="hover:text-green-500 transition">Contacto</a></li>
       </ul>
     </nav>
@@ -32,7 +33,6 @@
     </div>
   </section>
 
-
   <!-- About -->
   <section id="about" class="container mx-auto py-20 px-6">
     <div class="grid md:grid-cols-2 gap-10 items-center">
@@ -40,8 +40,12 @@
       <div>
         <h3 class="text-3xl font-bold text-green-600 mb-4">Sobre Nosotros</h3>
         <p class="text-gray-700 leading-relaxed">
-          En <strong>Fitness App</strong>, creemos en el poder de entrenar en contacto con la naturaleza. 
+          En <strong>Fitness App</strong>, creemos en el poder de entrenar en contacto con la naturaleza.
           Nuestros programas combinan lo mejor del fitness moderno con la esencia de la vida al aire libre.
+        </p>
+        <p class="text-gray-700 leading-relaxed mt-4">
+          Ofrecemos experiencias únicas que transforman tu rutina de ejercicios en una aventura
+          revitalizante que nutre tanto tu cuerpo como tu mente.
         </p>
       </div>
     </div>
@@ -52,17 +56,129 @@
     <div class="container mx-auto text-center px-6">
       <h3 class="text-3xl font-bold text-green-600 mb-12">Nuestros Programas</h3>
       <div class="grid md:grid-cols-3 gap-8">
+        <!-- Los programas se cargarán dinámicamente desde la API -->
         <div class="bg-white/80 backdrop-blur-lg p-6 rounded-2xl shadow-lg hover:scale-105 transition">
+          <div class="text-4xl mb-4">🧘‍♀️</div>
           <h4 class="text-xl font-semibold mb-3">Yoga Natural</h4>
           <p class="text-gray-600">Conecta con tu respiración y el entorno, mejora tu flexibilidad y encuentra paz interior.</p>
         </div>
         <div class="bg-white/80 backdrop-blur-lg p-6 rounded-2xl shadow-lg hover:scale-105 transition">
+          <div class="text-4xl mb-4">💪</div>
           <h4 class="text-xl font-semibold mb-3">Bootcamp al Aire Libre</h4>
           <p class="text-gray-600">Entrenamiento intenso con fuerza, cardio y agilidad en un entorno natural.</p>
         </div>
         <div class="bg-white/80 backdrop-blur-lg p-6 rounded-2xl shadow-lg hover:scale-105 transition">
+          <div class="text-4xl mb-4">🏃‍♂️</div>
           <h4 class="text-xl font-semibold mb-3">Running en Senderos</h4>
           <p class="text-gray-600">Explora rutas únicas y mejora tu resistencia con nuestros grupos de running guiados.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fitness Dashboard -->
+  <section id="fitness-dashboard" class="py-20 bg-gradient-to-r from-blue-50 via-white to-green-50">
+    <div class="container mx-auto px-6">
+      <div class="text-center mb-12">
+        <h3 class="text-3xl font-bold text-green-600 mb-4">🏋️ Dashboard Fitness</h3>
+        <p class="text-gray-600 max-w-2xl mx-auto">Obtén información personalizada sobre el clima y recetas saludables para optimizar tu entrenamiento</p>
+        <div class="flex justify-center mt-6 space-x-4">
+          <input 
+            type="text" 
+            id="city-input" 
+            placeholder="Ciudad (ej: San Jose)" 
+            value="San Jose"
+            class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none"
+          >
+          <select 
+            id="category-input"
+            class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none"
+          >
+            <option value="Chicken">Pollo 🐔</option>
+            <option value="Beef">Carne 🥩</option>
+            <option value="Seafood">Mariscos 🦐</option>
+            <option value="Vegetarian">Vegetariano 🥬</option>
+            <option value="Dessert">Postres Saludables 🍓</option>
+          </select>
+          <button 
+            id="load-dashboard-btn"
+            class="px-6 py-2 bg-green-500 hover:bg-green-600 text-white rounded-lg transition font-medium"
+          >
+            🔄 Actualizar
+          </button>
+        </div>
+      </div>
+
+      <div id="dashboard-content" class="grid md:grid-cols-2 gap-8">
+        <!-- Weather Section -->
+        <div class="bg-white/80 backdrop-blur-lg rounded-2xl shadow-lg p-6">
+          <div class="flex items-center mb-4">
+            <span class="text-2xl mr-3">🌤️</span>
+            <h4 class="text-xl font-semibold text-gray-800">Clima y Ejercicio</h4>
+          </div>
+          <div id="weather-content" class="space-y-3">
+            <div class="animate-pulse">
+              <div class="h-4 bg-gray-200 rounded w-3/4 mb-2"></div>
+              <div class="h-4 bg-gray-200 rounded w-1/2 mb-2"></div>
+              <div class="h-4 bg-gray-200 rounded w-2/3"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Nutrition Section -->
+        <div class="bg-white/80 backdrop-blur-lg rounded-2xl shadow-lg p-6">
+          <div class="flex items-center mb-4">
+            <span class="text-2xl mr-3">🍽️</span>
+            <h4 class="text-xl font-semibold text-gray-800">Recetas Fitness</h4>
+          </div>
+          <div id="nutrition-content" class="space-y-3">
+            <div class="animate-pulse">
+              <div class="h-4 bg-gray-200 rounded w-3/4 mb-2"></div>
+              <div class="h-4 bg-gray-200 rounded w-1/2 mb-2"></div>
+              <div class="h-4 bg-gray-200 rounded w-2/3"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Featured Recipes Grid -->
+      <div id="recipes-grid" class="mt-8">
+        <h5 class="text-xl font-semibold text-center text-gray-800 mb-6">🥘 Recetas Destacadas</h5>
+        <div id="recipes-container" class="grid md:grid-cols-3 lg:grid-cols-5 gap-4">
+          <!-- Las recetas se cargarán aquí dinámicamente -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-6">
+      <div class="text-center mb-12">
+        <h3 class="text-3xl font-bold text-green-600 mb-4">¿Por qué elegir entrenar al aire libre?</h3>
+        <p class="text-gray-600 max-w-2xl mx-auto">Descubre los beneficios únicos que solo la naturaleza puede ofrecer a tu rutina fitness</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="text-center p-6">
+          <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-2xl">🌱</span>
+          </div>
+          <h4 class="text-xl font-semibold mb-2">Aire Puro</h4>
+          <p class="text-gray-600">Respira aire fresco y oxigenado que mejora tu rendimiento y bienestar general.</p>
+        </div>
+        <div class="text-center p-6">
+          <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-2xl">☀️</span>
+          </div>
+          <h4 class="text-xl font-semibold mb-2">Vitamina D Natural</h4>
+          <p class="text-gray-600">Obtén vitamina D del sol mientras entrenas, fortaleciendo tus huesos y sistema inmune.</p>
+        </div>
+        <div class="text-center p-6">
+          <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-2xl">🧠</span>
+          </div>
+          <h4 class="text-xl font-semibold mb-2">Bienestar Mental</h4>
+          <p class="text-gray-600">Reduce el estrés y mejora tu estado de ánimo con el poder terapéutico de la naturaleza.</p>
         </div>
       </div>
     </div>
@@ -77,18 +193,109 @@
         <p class="text-lg">¿Listo para comenzar tu viaje fitness al aire libre?</p>
       </div>
       <form class="max-w-lg mx-auto space-y-6 bg-white/90 p-8 rounded-2xl shadow-lg backdrop-blur">
-        <input type="text" placeholder="Nombre" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-green-500 outline-none">
-        <input type="email" placeholder="Correo electrónico" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-green-500 outline-none">
-        <textarea placeholder="Mensaje" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-green-500 outline-none h-32"></textarea>
-        <button type="submit" class="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-3 rounded-lg transition">Enviar</button>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-2">Nombre completo</label>
+          <input
+            type="text"
+            name="nombre"
+            placeholder="Ingresa tu nombre completo"
+            required
+            minlength="2"
+            class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition"
+          >
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-2">Correo electrónico</label>
+          <input
+            type="email"
+            name="correo"
+            placeholder="tu@correo.com"
+            required
+            class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition"
+          >
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-2">Mensaje</label>
+          <textarea
+            name="mensaje"
+            placeholder="Cuéntanos sobre tus objetivos fitness y qué programa te interesa. También puedes preguntarnos sobre horarios, precios o cualquier duda que tengas..."
+            required
+            minlength="10"
+            rows="4"
+            class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition resize-none"
+          ></textarea>
+        </div>
+        <button
+          type="submit"
+          class="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl"
+        >
+          <span class="flex items-center justify-center">
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+            </svg>
+            Enviar Mensaje
+          </span>
+        </button>
       </form>
+
+      <!-- Contact Info -->
+      <div class="mt-12 text-center text-white">
+        <div class="grid md:grid-cols-3 gap-6 max-w-2xl mx-auto">
+          <div class="flex items-center justify-center space-x-2">
+            <span class="text-xl">📧</span>
+            <span>info@fitnessapp.com</span>
+          </div>
+          <div class="flex items-center justify-center space-x-2">
+            <span class="text-xl">📱</span>
+            <span>+506 6355-9447</span>
+          </div>
+          <div class="flex items-center justify-center space-x-2">
+            <span class="text-xl">📍</span>
+            <span>San José, Costa Rica</span>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-
   <!-- Footer -->
-  <footer class="bg-green-700 text-white text-center py-6">
-    <p>&copy; 2025 Fitness App. Todos los derechos reservados.</p>
+  <footer class="bg-green-700 text-white py-12">
+    <div class="container mx-auto px-6">
+      <div class="grid md:grid-cols-4 gap-8">
+        <div>
+          <h4 class="text-xl font-bold mb-4">Fitness App</h4>
+          <p class="text-green-200">Tu compañero ideal para entrenar en armonía con la naturaleza.</p>
+        </div>
+        <div>
+          <h5 class="font-semibold mb-3">Programas</h5>
+          <ul class="space-y-2 text-green-200">
+            <li>Yoga Natural</li>
+            <li>Bootcamp al Aire Libre</li>
+            <li>Running en Senderos</li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="font-semibold mb-3">Enlaces</h5>
+          <ul class="space-y-2">
+            <li><a href="#about" class="text-green-200 hover:text-white transition">Sobre Nosotros</a></li>
+            <li><a href="#programs" class="text-green-200 hover:text-white transition">Programas</a></li>
+            <li><a href="#contact" class="text-green-200 hover:text-white transition">Contacto</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="font-semibold mb-3">Síguenos</h5>
+          <div class="flex space-x-4">
+            <a href="#" class="text-green-200 hover:text-white transition text-xl">📘</a>
+            <a href="#" class="text-green-200 hover:text-white transition text-xl">📷</a>
+            <a href="#" class="text-green-200 hover:text-white transition text-xl">🐦</a>
+          </div>
+        </div>
+      </div>
+      <hr class="border-green-600 my-8">
+      <div class="text-center text-green-200">
+        <p>&copy; 2025 Fitness App. Todos los derechos reservados.</p>
+      </div>
+    </div>
   </footer>
 
   <script src="script.js"></script>
